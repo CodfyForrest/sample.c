@@ -11,9 +11,7 @@ int main(int argc, char** argv) {
       fprintf(stderr, "Please provide the address of a file as an input.\n");
       return -1;
     }
-    char userNameQuoted[1000] = {0};
-    encodeShellString(userNameQuoted, 1000, userName); 
-    char command2[1000] = {0};
-    sprintf(command2, "userinfo -v %s", userNameQuoted);
-    system(command2);
+    char command1[1000] = {0};
+    sprintf(command1, "userinfo -v \"%s\"", userName);
+    system(command1);
 }
