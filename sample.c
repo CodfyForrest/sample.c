@@ -11,7 +11,9 @@ int main(int argc, char** argv) {
       fprintf(stderr, "Please provide the address of a file as an input.\n");
       return -1;
     }
-    char cmd[BUFSIZE] = "wc -c < ";
-    strcat(cmd, argv[1]);
-    system(cmd);
+    char userNameQuoted[1000] = {0};
+    encodeShellString(userNameQuoted, 1000, userName); 
+    char command2[1000] = {0};
+    sprintf(command2, "userinfo -v %s", userNameQuoted);
+    system(command2);
 }
